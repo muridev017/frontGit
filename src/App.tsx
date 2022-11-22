@@ -1,26 +1,14 @@
-import { Key, ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from "react"
-import { useFetch } from "./hooks/useFetch"
+import { Routes, Route } from "react-router-dom";
+import { Home } from "./pages/home/Home";
+import { Repo } from "./pages/Repo";
+import { Repos } from "./pages/Repos";
 
-type Repositorio = {
-  full_name: string
-  description: string
-}
-
-function App() {
-  const { data: repositorios, isFetching } = useFetch<Repositorio>('users/muridev017/repos')
+export default function App(){
   return (
-    <ul>
-      { isFetching && <p>Carregando...</p>}
-      {repositorios?.map((repo: { full_name: boolean | Key | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | null | undefined; description: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined }) => {
-        return (
-          <li key={repo.full_name}>
-            <strong>{repo.full_name}</strong>
-            <p>{repo.description}</p>
-          </li>
-        )
-      })}
-    </ul>
-    )
+    <Routes>
+      <Route path="/" element= {<Home/>}/>
+      <Route path="/repos" element= {<Repos/>} />
+      <Route path="/repo/*" element= {<Repo/>} />
+    </Routes>
+  )
 }
-
-export default App
