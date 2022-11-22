@@ -1,12 +1,26 @@
 import './Home.css'
+import { useQuery } from "react-query"
+import { Repositorio } from '../Repos'
+import axios from 'axios'
 
 export function Home (){
+    const userName = ''
+    const {data, isLoading} = useQuery<Repositorio[] | undefined>('search', async () =>{
+        const response = await axios.get(`https://api.github.com/users/${userName}/repos`)
+
+        return response.data
+    }, {
+        staleTime: 1000 * 60
+    } )
+
+
+
     return(
         <div className="container">
             <div className="searchForm">
                 <h2>Github Search User</h2>
                 <form>
-                    <input type="text" />
+                    <input id='search' type={userName} />
                     <button>Search</button>
                 </form>
             </div>
