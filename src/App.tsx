@@ -1,14 +1,12 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Home } from "./pages/home/Home";
-import { Repo } from "./pages/Repo";
-import { Repos } from "./pages/Repos";
+import { User } from "./pages/user/User";
 
-export default function App(){
+export default function App() {
   return (
-    <Routes>
-      <Route path="/" element= {<Home/>}/>
-      <Route path="/repos" element= {<Repos/>} />
-      <Route path="/repo/*" element= {<Repo/>} />
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/user/:login" element={<User />} />
+      </Routes>
   )
 }
