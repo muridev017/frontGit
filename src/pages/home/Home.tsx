@@ -1,11 +1,11 @@
 import './Home.css'
-import { useState, useEffect } from 'react'
-import axios from 'axios'
-import { Users } from '../../ui/Users'
+import axios from "axios"
+import { useEffect, useState } from "react"
+import { Repo } from "../../ui/Repo"
 
 export function Home() {
     const [query, setQuery] = useState<string>('')
-    const [user, setUser] = useState<[]>([])
+    const [repo, setRepo] = useState<[]>([])
 
     const [page, setPage] = useState(1)
 
@@ -37,14 +37,15 @@ export function Home() {
         setLimit(parseInt(value))
     }
 
-    const fetchUser = async () => {
+    const fetchRepo = async () => {
         try {
-            const { data } = await axios.get('https://api.github.com/search/users?q=' + query, {
+            const { data } = await axios.get('https://api.github.com/search/repositories?q=' + query, {
                 params: {
                     page,
                     per_page: limit
                 }
             })
+            console.log(data)
             return data?.items
         } catch (error) {
             console.error(error)
@@ -52,36 +53,36 @@ export function Home() {
         }
     }
 
-    const handleSearchUser = async (e: { preventDefault: () => void }) => {
+    const handleSearchRepo = async (e: { preventDefault: () => void }) => {
         e.preventDefault()
         if (query) {
-            const items = await fetchUser()
-            setUser(items)
+            const items = await fetchRepo()
+            setRepo(items)
         } else {
             console.log('Sua pesquisa esta vazia...')
         }
     }
 
     useEffect(() => {
-        const displayUserOnChange = async () => {
+        const displayRepoOnChange = async () => {
             if (query) {
-                const items = await fetchUser()
-                setUser(items)
+                const items = await fetchRepo()
+                setRepo(items)
             }
         }
-        displayUserOnChange()
+        displayRepoOnChange()
     }, [page, limit])
 
     return (
         <div className="container">
             <div className="searchForm">
-                <h2>Github Search User</h2>
+                <h2>Github Search Repository</h2>
                 <form>
                     <input value={query} onChange={handleQueryInput} type='text' />
-                    <button onClick={handleSearchUser}>Search</button>
+                    <button onClick={handleSearchRepo}>Search</button>
                 </form>
-            </div>
-            <div className="searchResults">
+        </div>
+        <div className="searchResults">
                 <div className='moreOptions'>
                     <label>
                         <small>Per Page</small>
@@ -98,13 +99,12 @@ export function Home() {
                     </div>
 
                 </div>
-                {user ? (user.map(user => {
-                    return <Users user={user} key={user.id} />
+                {repo ? (repo.map((repo) : any => {
+                    return <Repo repo={repo} key={""} id={0} avatar_url={""} name={""} bio={""} description={""} language={""} followers={0} following={0} location={""} blog={""} html_url={""} />
                 })
                 ) : (
                     <h2> Não tem nada aqui...</h2>
                 )}
             </div>
         </div>
-    )
-}
+    )}
