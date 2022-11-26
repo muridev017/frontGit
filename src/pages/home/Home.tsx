@@ -48,7 +48,6 @@ export function Home() {
             console.log(data)
             return data?.items
         } catch (error) {
-            console.error(error)
             return null
         }
     }
@@ -58,8 +57,6 @@ export function Home() {
         if (query) {
             const items = await fetchRepo()
             setRepo(items)
-        } else {
-            console.log('Sua pesquisa esta vazia...')
         }
     }
 
@@ -99,8 +96,12 @@ export function Home() {
                     </div>
 
                 </div>
-                {repo ? (repo.map((repo) : any => {
-                    return <Repo repo={repo} key={""} id={0} avatar_url={""} name={""} bio={""} description={""} language={""} followers={0} following={0} location={""} blog={""} html_url={""} />
+                {repo ? (repo.map((repo, index) : any => {
+                    return <Repo repo={repo} key={index} id={0} 
+                        avatar_url={""} name={""} bio={""} 
+                        description={""} language={""}
+                        followers={0} following={0} 
+                        location={""} blog={""} html_url={""} />
                 })
                 ) : (
                     <h2> Não tem nada aqui...</h2>
