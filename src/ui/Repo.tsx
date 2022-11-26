@@ -1,4 +1,3 @@
-
 import star from "../assets/star.png"
 import "./repo.css"
 
@@ -8,7 +7,7 @@ export function Repo({ repo }: any) {
         <div className="repo">
             <h3>
                 {/* URL */}
-                <a href={html_url}>{name}</a>
+                <a href={html_url} target="_blank">{name}</a>
             </h3>
             {/* estrelas */}
             <p>
