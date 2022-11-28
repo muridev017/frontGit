@@ -37,5 +37,17 @@
     "typescript": "^4.6.4",
     "vite": "^3.2.3",
     "vitest": "^0.25.3"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "verbose": true
   }
 }

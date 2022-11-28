@@ -6,7 +6,7 @@ import { Repo } from "../../ui/Repo"
 export function Home() {
     const [query, setQuery] = useState<string>('')
     const [repo, setRepo] = useState<[]>([])
-
+    
     const [page, setPage] = useState(1)
 
     const [limit, setLimit] = useState(10)
@@ -75,7 +75,7 @@ export function Home() {
             <div className="searchForm">
                 <h2>Github Search Repository</h2>
                 <form>
-                    <input value={query} onChange={handleQueryInput} type='text' />
+                    <input placeholder='Digite o repositório' value={query} onChange={handleQueryInput} type='text' />
                     <button onClick={handleSearchRepo}>Search</button>
                 </form>
         </div>
