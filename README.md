@@ -1,6 +1,6 @@
 ##Projeto de consumo de API do GitHub
 
-![Print da Home](../front-git/src/assets/print%20tela.png)
+![Print da Home](muridev017/frontGit/src/assets/print tela.png)
 
 **Linguagem**
 -TypeScript;
