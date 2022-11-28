@@ -21,7 +21,7 @@ Axios, Jest e Testing-Library;
 
 -Busquei o projeto em um framework que tenho mais familiaridade no estudo e que me deixa mais livre na componetização. Mesmo sendo apenas uma barra de pesquisa com os resultados, foi muito tranquilo de acessar a API com os dados requeridos. A linguagem TypeScript neste projeto achei um bom treinamento para minha hard skill, mas em minha opinião acredito que tenha sobrado linguagem forte para um projeto que poderia ser feito em JS vanilla. (rsrsrs)
 
-**Desafios e problemas*
+**Desafios e problemas**
 
 Meu maior desafio foi a parte de testes unitários, tive muita vontade de aprender porém aparentemente não deu certo. Li e reli a documentação das libs de testes que busquei que eram mais indicadas mas ainda sim meu teste falhou em diferentes formas que fui refatorando.
 
